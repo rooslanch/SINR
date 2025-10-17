@@ -1,0 +1,17 @@
+x = -5:0.1:5;
+F1 = sin(x);
+F2 = cos(x);
+F3 = ln(x);
+F4 = abs(x);
+hold on
+plot(x, F1,['C', '+', '-'])
+plot(x, F2,['G', '^', ':'])
+plot(x, F3,['B', 'V', '-.'])
+plot(x, F4, ['R', '*', '--'])
+grid
+xlabel('X')
+ylabel('Y')
+title('Практика 7, задание 1.2')
+legend('y1 = x', 'y2 = cos(x)', 'y3 = cos(x^2)*x', 'y4 = |x|')
+
+

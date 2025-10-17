@@ -1,0 +1,57 @@
+%1.1
+x = 0:0.01:1;
+f1 = atan(sqrt(x));
+plot(x, f1, ['R', '-'])
+grid
+xlabel('x')
+ylabel('y')
+title('Plot: $arctg(\sqrt{x}$)', 'Interpreter','latex')
+
+x1 = 0:0.01:1;
+y = atan(sqrt(x1));
+trapz1 = trapz(x1, y);
+disp("Метод трапеций с шагом 0.01:")
+disp(trapz1)
+
+x2 = 0:0.1:1;
+y = atan(sqrt(x2));
+trapz2 = trapz(x2, y);
+disp("Метод трапеций с шагом 0.1:")
+disp(trapz2)
+
+x3 = 0:0.5:1;
+y = atan(sqrt(x3));
+trapz3 = trapz(x3, y);
+disp("Метод трапеций с шагом 0.5:")
+disp(trapz3)
+
+f = @(x) atan(sqrt(x));
+disp("Метод Симпсона:")
+disp(quad(f, 0, 1))
+
+disp("Метод Ньютона-Котеса 8-го порядка:")
+disp(quadl(f, 0, 1))
+
+f = @(x, y) exp(cos(y) - x) * y^2;
+disp("Двойной интеграл численным методом:")
+disp(dblquad(f, 0, 1, 1, 2))
+
+syms x;
+y1 = sqrt(x)/(1 + x);
+disp("Определенный интеграл аналитическим методом:")
+pretty(int(y1, 0, 3))
+
+y2 = x / (1 + x^2);
+disp("Неопределенный интеграл аналитическим методом:")
+pretty(int(y2))
+
+disp("Несобственный интеграл:")
+y3 = x * exp(-2*x)/sqrt(exp(x) - 1);
+
+disp("Аналитический метод:")
+pretty(int(y3, 0, inf))
+
+f = @(x) x .* exp(-2.*x)./sqrt(exp(x) - 1);
+disp("Численный метод:")
+disp(integral(f, 0, inf))
+
